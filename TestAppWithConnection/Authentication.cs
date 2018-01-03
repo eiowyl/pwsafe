@@ -33,21 +33,21 @@ namespace TestAppWithConnection
                 passWord = password.Text;
 
                 cn.ConnectionString = "server=" + serverName + ";userid=" + userName + ";password=" + passWord + ";database=accountsdb";
-                cn.Open();
+                //cn.Open();
 
-                /*this.Hide();
-                Main ss = new Main();
+                this.Hide();
+                /*Main ss = new Main();
                 ss.Show();*/
 
                 using (Main ss = new Main())
                 {
                     if (ss.ShowDialog() == DialogResult.OK)
                     {
-                        this.Close();
                         ss.Show();
                         ss.userName_Main = userName;
                         ss.serverName_Main = serverName;
                         ss.passWord_Main = passWord;
+                        MessageBox.Show(ss.serverName_Main);
                     }
                 }
 
