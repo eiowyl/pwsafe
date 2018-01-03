@@ -18,7 +18,7 @@ namespace TestAppWithConnection
         {
             InitializeComponent();
         }
-
+        
         public MySqlConnection cn = new MySqlConnection();
         public String serverName;
         public String userName;
@@ -35,14 +35,15 @@ namespace TestAppWithConnection
                 cn.ConnectionString = "server=" + serverName + ";userid=" + userName + ";password=" + passWord + ";database=accountsdb";
                 cn.Open();
 
-                this.Hide();
-                /*Main ss = new Main();
+                /*this.Hide();
+                Main ss = new Main();
                 ss.Show();*/
 
                 using (Main ss = new Main())
                 {
                     if (ss.ShowDialog() == DialogResult.OK)
                     {
+                        this.Close();
                         ss.Show();
                         ss.userName_Main = userName;
                         ss.serverName_Main = serverName;
