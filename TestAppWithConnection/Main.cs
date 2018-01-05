@@ -19,9 +19,19 @@ namespace TestAppWithConnection
             InitializeComponent();
         }
 
-        public String serverName_Main;
-        public String userName_Main;
-        public String passWord_Main;
+        string userName_Main;
+
+        private void Main_Load_1(object sender, EventArgs e)
+        {
+            userName_Main = Authentication.userName;
+            MessageBox.Show(userName_Main);
+        }
+
+        /*public MySqlConnection cn = new MySqlConnection();
+        Authentication test = new Authentication();
+        string serverName_Main;
+        string userName_Main;
+        string passWord_Main;*/
 
         // Closes the window, does not close the connection
         private void EndSession_Click(object sender, EventArgs e)
@@ -31,6 +41,25 @@ namespace TestAppWithConnection
             //Authentication.closeConn();
             // MessageBox.Show("Thankyou. You have successfully disconnected.");
             this.Close();
+            System.Environment.Exit(1);
+        }
+
+        private void OpenConn_Click(object sender, EventArgs e)
+        {
+            //passWord_Main = Authentication.passWord;
+            userName_Main = Authentication.userName;
+            //serverName_Main = Authentication.serverName;
+
+            try
+            {
+                //cn.ConnectionString = "server=" + serverName_Main + ";userid=" + userName_Main + ";password=" + passWord_Main + ";database=accountsdb";
+                //cn.Open();
+                MessageBox.Show("Connection successfully created.");
+                //cn.Close();
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         /*if (mySQLConnection.State != ConnectionState.Open)
