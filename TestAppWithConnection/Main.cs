@@ -28,6 +28,23 @@ namespace TestAppWithConnection
             server_Main = Authentication.serverName;
             userName_Main = Authentication.userName;
             passWord_Main = Authentication.passWord;
+
+            try
+            {
+                MySqlConnection con = new MySqlConnection("server=" + server_Main + ";userid=" + userName_Main + ";password=" + passWord_Main + ";database=accountsdb");
+                MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT Website, Username, Email, Password FROM accountsdb.accounts", con);
+
+                con.Open();
+
+                DataSet ds = new DataSet();
+                adapter.Fill(ds, "accounts");
+                SQLDataDisplayBox.DataSource = ds.Tables["accounts"];
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         // Closes the window, does not close the connection
@@ -48,6 +65,8 @@ namespace TestAppWithConnection
                 string sql = "SELECT * FROM accounts";
                 MySqlCommand cmd = new MySqlCommand(sql, cn);
                 cn.Open();
+
+                
 
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while(reader.Read())
@@ -85,7 +104,7 @@ namespace TestAppWithConnection
 
         }
 
-        private void WebBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void SQLDataDisplayBox_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

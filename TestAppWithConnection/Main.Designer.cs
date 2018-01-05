@@ -34,12 +34,13 @@
             this.Username = new System.Windows.Forms.Label();
             this.Pass = new System.Windows.Forms.Label();
             this.Email = new System.Windows.Forms.Label();
-            this.WebBox = new System.Windows.Forms.ListBox();
+            this.SQLDataDisplayBox = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.SQLDataDisplayBox)).BeginInit();
             this.SuspendLayout();
             // 
             // EndSession
             // 
-            this.EndSession.Location = new System.Drawing.Point(544, 198);
+            this.EndSession.Location = new System.Drawing.Point(544, 593);
             this.EndSession.Name = "EndSession";
             this.EndSession.Size = new System.Drawing.Size(176, 51);
             this.EndSession.TabIndex = 0;
@@ -97,21 +98,21 @@
             this.Email.Text = "Email";
             this.Email.Click += new System.EventHandler(this.Email_Click);
             // 
-            // WebBox
+            // SQLDataDisplayBox
             // 
-            this.WebBox.FormattingEnabled = true;
-            this.WebBox.Location = new System.Drawing.Point(187, 88);
-            this.WebBox.Name = "WebBox";
-            this.WebBox.Size = new System.Drawing.Size(120, 95);
-            this.WebBox.TabIndex = 6;
-            this.WebBox.SelectedIndexChanged += new System.EventHandler(this.WebBox_SelectedIndexChanged);
+            this.SQLDataDisplayBox.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SQLDataDisplayBox.Location = new System.Drawing.Point(21, 69);
+            this.SQLDataDisplayBox.Name = "SQLDataDisplayBox";
+            this.SQLDataDisplayBox.Size = new System.Drawing.Size(507, 575);
+            this.SQLDataDisplayBox.TabIndex = 6;
+            this.SQLDataDisplayBox.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SQLDataDisplayBox_CellContentClick);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(732, 261);
-            this.Controls.Add(this.WebBox);
+            this.ClientSize = new System.Drawing.Size(732, 656);
+            this.Controls.Add(this.SQLDataDisplayBox);
             this.Controls.Add(this.Email);
             this.Controls.Add(this.Pass);
             this.Controls.Add(this.Username);
@@ -121,6 +122,7 @@
             this.Name = "Main";
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load_1);
+            ((System.ComponentModel.ISupportInitialize)(this.SQLDataDisplayBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,6 +136,6 @@
         private System.Windows.Forms.Label Username;
         private System.Windows.Forms.Label Pass;
         private System.Windows.Forms.Label Email;
-        private System.Windows.Forms.ListBox WebBox;
+        private System.Windows.Forms.DataGridView SQLDataDisplayBox;
     }
 }
