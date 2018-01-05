@@ -36,7 +36,7 @@ namespace TestAppWithConnection
                 cn.Open();
                 this.Hide();
                 cn.Close();
-
+                //test
                 Main ss = new Main();
                 ss.Show();
 
