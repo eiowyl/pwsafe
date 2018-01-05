@@ -26,17 +26,8 @@ namespace TestAppWithConnection
         // Closes the window, does not close the connection
         private void EndSession_Click(object sender, EventArgs e)
         {
-            //cn.Close();
-            //Authentication.cn.Close();
-            //Authentication.closeConn();
-            // MessageBox.Show("Thankyou. You have successfully disconnected.");
+            MessageBox.Show("Thankyou. You have successfully disconnected.");
             this.Close();
         }
-
-        /*if (mySQLConnection.State != ConnectionState.Open)
-        {
-            mySQLConnection.Close();
-            mySQLConnection.Open();
-        }*/
     }
 }
