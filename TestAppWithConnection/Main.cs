@@ -23,7 +23,7 @@ namespace TestAppWithConnection
         public String userName_Main;
         public String passWord_Main;
 
-        // Closes the window, does not close the connection
+        // Closes the Program
         private void EndSession_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Thankyou. You have successfully disconnected.");
