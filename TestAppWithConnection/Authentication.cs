@@ -34,9 +34,8 @@ namespace TestAppWithConnection
             {
                 cn.ConnectionString = "server=" + serverName + ";userid=" + userName + ";password=" + passWord + ";database=accountsdb";
                 cn.Open();
-                //cnclone = cn.Clone();
-                //cn.Close();
                 this.Hide();
+                cn.Close();
 
                 Main ss = new Main();
                 ss.Show();

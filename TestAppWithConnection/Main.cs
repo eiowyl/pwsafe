@@ -19,8 +19,6 @@ namespace TestAppWithConnection
             InitializeComponent();
         }
 
-        MySqlConnection cn = new MySqlConnection();
-        
         string server_Main;
         string userName_Main;
         string passWord_Main;
@@ -35,8 +33,7 @@ namespace TestAppWithConnection
         // Closes the window, does not close the connection
         private void EndSession_Click(object sender, EventArgs e)
         {
-            //cn.Close();
-            // MessageBox.Show("Thankyou. You have successfully disconnected.");
+            MessageBox.Show("Thankyou. You have successfully disconnected.");
             this.Close();
             System.Environment.Exit(1);
         }
@@ -45,15 +42,52 @@ namespace TestAppWithConnection
         {
             try
             {
-                cn.ConnectionString = "server=" + server_Main + ";userid=" + userName_Main + ";password=" + passWord_Main + ";database=accountsdb";
-                cn.Open();
+                MySqlConnection cn = new MySqlConnection("server=" + server_Main + ";userid=" + userName_Main + ";password=" + passWord_Main + ";database=accountsdb");
+
                 // Pull Data from the Database and display it
+                string sql = "SELECT * FROM accounts";
+                MySqlCommand cmd = new MySqlCommand(sql, cn);
+                cn.Open();
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while(reader.Read())
+                {
+                    Website.Text += reader.GetString("Website");
+                    Username.Text += reader.GetString("Username");
+                    Pass.Text += reader.GetString("Password");
+                    Email.Text += reader.GetString("Email");
+                }
 
                 cn.Close();
-            } catch (Exception ex)
+;            } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void Website_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Username_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Pass_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Email_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void WebBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
