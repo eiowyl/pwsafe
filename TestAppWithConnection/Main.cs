@@ -19,26 +19,23 @@ namespace TestAppWithConnection
             InitializeComponent();
         }
 
+        MySqlConnection cn = new MySqlConnection();
+        
+        string server_Main;
         string userName_Main;
+        string passWord_Main;
 
         private void Main_Load_1(object sender, EventArgs e)
         {
+            server_Main = Authentication.serverName;
             userName_Main = Authentication.userName;
-            MessageBox.Show(userName_Main);
+            passWord_Main = Authentication.passWord;
         }
-
-        /*public MySqlConnection cn = new MySqlConnection();
-        Authentication test = new Authentication();
-        string serverName_Main;
-        string userName_Main;
-        string passWord_Main;*/
 
         // Closes the window, does not close the connection
         private void EndSession_Click(object sender, EventArgs e)
         {
             //cn.Close();
-            //Authentication.cn.Close();
-            //Authentication.closeConn();
             // MessageBox.Show("Thankyou. You have successfully disconnected.");
             this.Close();
             System.Environment.Exit(1);
@@ -46,26 +43,17 @@ namespace TestAppWithConnection
 
         private void OpenConn_Click(object sender, EventArgs e)
         {
-            //passWord_Main = Authentication.passWord;
-            userName_Main = Authentication.userName;
-            //serverName_Main = Authentication.serverName;
-
             try
             {
-                //cn.ConnectionString = "server=" + serverName_Main + ";userid=" + userName_Main + ";password=" + passWord_Main + ";database=accountsdb";
-                //cn.Open();
-                MessageBox.Show("Connection successfully created.");
-                //cn.Close();
+                cn.ConnectionString = "server=" + server_Main + ";userid=" + userName_Main + ";password=" + passWord_Main + ";database=accountsdb";
+                cn.Open();
+                // Pull Data from the Database and display it
+
+                cn.Close();
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-
-        /*if (mySQLConnection.State != ConnectionState.Open)
-        {
-            mySQLConnection.Close();
-            mySQLConnection.Open();
-        }*/
     }
 }
