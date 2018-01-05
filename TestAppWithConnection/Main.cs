@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -47,7 +47,7 @@ namespace TestAppWithConnection
             }
         }
 
-        // Closes the window, does not close the connection
+        // Closes the Program
         private void EndSession_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Thankyou. You have successfully disconnected.");
@@ -78,11 +78,11 @@ namespace TestAppWithConnection
                 }
 
                 cn.Close();
-;            } catch (Exception ex)
-            {
+                } catch (Exception ex)
+                {
                 MessageBox.Show(ex.Message);
-            }
-        }
+                }
+        
 
         private void Website_Click(object sender, EventArgs e)
         {
