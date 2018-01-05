@@ -29,6 +29,9 @@ namespace TestAppWithConnection
             userName_Main = Authentication.userName;
             passWord_Main = Authentication.passWord;
 
+            //disp_data();
+
+            
             try
             {
                 MySqlConnection con = new MySqlConnection("server=" + server_Main + ";userid=" + userName_Main + ";password=" + passWord_Main + ";database=accountsdb");
@@ -55,36 +58,17 @@ namespace TestAppWithConnection
             System.Environment.Exit(1);
         }
 
-        private void OpenConn_Click(object sender, EventArgs e)
+        private void SQLDataDisplayBox_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                MySqlConnection cn = new MySqlConnection("server=" + server_Main + ";userid=" + userName_Main + ";password=" + passWord_Main + ";database=accountsdb");
 
-                // Pull Data from the Database and display it
-                string sql = "SELECT * FROM accounts";
-                MySqlCommand cmd = new MySqlCommand(sql, cn);
-                cn.Open();
-
-                
-
-                MySqlDataReader reader = cmd.ExecuteReader();
-                while(reader.Read())
-                {
-                    Website.Text += reader.GetString("Website");
-                    Username.Text += reader.GetString("Username");
-                    Pass.Text += reader.GetString("Password");
-                    Email.Text += reader.GetString("Email");
-                }
-
-                cn.Close();
-;            } catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
-        private void Website_Click(object sender, EventArgs e)
+        private void Title_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Insert_Click(object sender, EventArgs e)
         {
 
         }
@@ -94,19 +78,108 @@ namespace TestAppWithConnection
 
         }
 
-        private void Pass_Click(object sender, EventArgs e)
+        private void Website_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void User_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void Email_Click(object sender, EventArgs e)
+        private void pw_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void SQLDataDisplayBox_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void category_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void email_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void options_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        // Text box for filling in the website
+        private void websiteTB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        // Text box for filling in the username
+        private void usernameTB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        // Text box for filling in the password
+        private void passwordTB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        // Text box for filling in the email
+        private void emailTB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        // Submit button for adding in a new entry to the DB
+        private void Submit_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void SubmitSQL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection("server=" + server_Main + ";userid=" + userName_Main + ";password=" + passWord_Main + ";database=accountsdb");
+
+                string sql = "INSERT into accounts(Website, Username, Password, Email, Category) VALUES ('" + websiteTB.Text + "', '" + usernameTB.Text + "', '" + passwordTB.Text + "', '" + emailTB.Text + "', '" + options.Text + "'); commit;";
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Saved successfully");
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        /*
+        public void disp_data()
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection("server=" + server_Main + ";userid=" + userName_Main + ";password=" + passWord_Main + ";database=accountsdb");
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "SELECT Website, Username, Email, Password FROM accountsdb.accounts";
+                cmd.ExecuteNonQuery();
+                DataTable dataTable = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dataTable);
+                SQLDataDisplayBox.DataSource = dataTable;
+
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Could Not Establish a Connection");
+            }
+        }*/
     }
 }
